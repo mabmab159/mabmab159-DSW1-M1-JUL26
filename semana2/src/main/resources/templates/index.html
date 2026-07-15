@@ -3,14 +3,30 @@
 <head>
     <meta charset="UTF-8">
     <title>Title</title>
+    <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
 </head>
 <body>
-<h1>Esta es la pagina de inicio - Index</h1>
+<h1 class="text-5xl">Esta es la pagina de inicio - Index</h1>
 <p>Bienvenido tienes las siguientes opciones:</p>
 <a href="/alumno/nuevo">Formulario de registro</a>
 <p>Puedes consultar los datos de los siguientes alumnos: </p>
-<ul th:each="alumno : ${alumnos}">
-    <a th:href="@{/alumno/{codigo}(codigo=${alumno.codigo})}" th:text="${alumno.codigo}"></a>
-</ul>
+<table>
+    <thead>
+    <td>Codigo</td>
+    <td>Nombre</td>
+    <td>Apellido</td>
+    <td>Correo</td>
+    <td>Fecha de Nacimiento</td>
+    <td>Opciones</td>
+    </thead>
+    <tr th:each="alumno : ${alumnos}">
+        <td th:text="${alumno.codigo}"></td>
+        <td th:text="${alumno.nombre}"></td>
+        <td th:text="${alumno.apellido}"></td>
+        <td th:text="${alumno.correo}"></td>
+        <td th:text="${alumno.fechaNacimiento}"></td>
+        <td><a th:href="@{/alumno/{codigo}(codigo=${alumno.codigo})}">Visualizar datos</a></td>
+    </tr>
+</table>
 </body>
 </html>
