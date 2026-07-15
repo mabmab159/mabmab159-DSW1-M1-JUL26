@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+
+<h1>Formulario de registro</h1>
+<form th:action="@{/alumno/guardar}" th:object="${alumno}" method="post">
+    <p>Codigo: </p>
+    <input type="text" th:field="*{codigo}"><br>
+    <p>Nombre: </p>
+    <input type="text" th:field="*{nombre}"><br>
+    <p>Apellido: </p>
+    <input type="text" th:field="*{apellido}"><br>
+    <p>Correo: </p>
+    <input type="text" th:field="*{correo}"><br>
+    <p>Fecha de nacimiento: </p>
+    <input type="date" th:field="*{fechaNacimiento}"><br>
+    <button type="submit">Guardar</button>
+</form>
+</body>
+</html>

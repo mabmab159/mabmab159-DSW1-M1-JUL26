@@ -1,0 +1,16 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<h1>Esta es la pagina de inicio - Index</h1>
+<p>Bienvenido tienes las siguientes opciones:</p>
+<a href="/alumno/nuevo">Formulario de registro</a>
+<p>Puedes consultar los datos de los siguientes alumnos: </p>
+<ul th:each="alumno : ${alumnos}">
+    <a th:href="@{/alumno/{codigo}(codigo=${alumno.codigo})}" th:text="${alumno.codigo}"></a>
+</ul>
+</body>
+</html>

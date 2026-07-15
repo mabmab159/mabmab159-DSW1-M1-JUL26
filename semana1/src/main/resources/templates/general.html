@@ -1,0 +1,16 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+ <h1>General</h1>
+<h2>Este es el perfil general del alumno</h2>
+<p th:text="${alumnos}"></p>
+<h3>Esta es la lista de alumnos</h3>
+<ul th:each="alumno : ${alumnos}">
+  <li th:text="${alumno}"></li>
+</ul>
+</body>
+</html>

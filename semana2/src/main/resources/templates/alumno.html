@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<h1>Hola estudiantes</h1>
+<p>Este es el alumno</p>
+<p th:text="${alumno.getCodigo()}"></p>
+<p th:text="${alumno.getNombre()}"></p>
+<p th:text="${alumno.getApellido()}"></p>
+<div th:if="${alumno.getCorreo()}">
+    <p th:text="${alumno.getCorreo()}"></p>
+</div>
+<p th:text="${alumno.getFechaNacimiento()}"></p>
+</body>
+<a th:href="@{/alumno}">Volver</a>
+</html>

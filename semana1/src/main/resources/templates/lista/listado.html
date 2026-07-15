@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <link th:href="@{/lista/styles.css}" rel="stylesheet">
+</head>
+<body >
+<h1>Listado</h1>
+<div class="container">
+  <div  th:each="alumno : ${alumnos}">
+    <div>
+      <p th:text="${alumno.codigo}"></p>
+      <p th:text="${alumno.nombre}"></p>
+      <p th:text="${alumno.apellido}"></p>
+      <p th:text="${alumno.fechaNacimiento}"></p>
+      <p th:text="${alumno.isActivo()}"></p>
+    </div>
+  </div>
+</div>
+</body>
+</html>
