@@ -8,4 +8,6 @@ public interface IAlumnoService {
     Alumno obtenerAlumno(String codigo);
     Alumno guardarAlumno(Alumno alumno);
     List<Alumno> obtenerTodos();
+    void eliminarAlumno(String codigo);
+    Alumno actualizarAlumno(String codigo, Alumno alumno);
 }

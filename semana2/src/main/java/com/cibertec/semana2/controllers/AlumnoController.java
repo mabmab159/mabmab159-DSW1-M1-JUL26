@@ -7,8 +7,6 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 
-import java.time.LocalDate;
-
 @Controller
 @RequiredArgsConstructor
 @RequestMapping("/alumno")
@@ -37,6 +35,24 @@ public class AlumnoController {
     @PostMapping("/guardar")
     public String guardarAlumno(@ModelAttribute Alumno alumno) {
         iAlumnoService.guardarAlumno(alumno);
+        return "redirect:/alumno";
+    }
+
+    @GetMapping("/actualizar/{codigo}")
+    public String actualizarAlumno(Model model, @PathVariable String codigo) {
+        model.addAttribute("alumno", iAlumnoService.obtenerAlumno(codigo));
+        return "formularioActualizar";
+    }
+
+    @PostMapping("/actualizar/{codigo}")
+    public String actualizarAlumnoPost(@PathVariable String codigo, @ModelAttribute Alumno alumno){
+        iAlumnoService.actualizarAlumno(codigo, alumno);
+        return "redirect:/alumno";
+    }
+
+    @PostMapping("/delete/{codigo}")
+    public String eliminarAlumno(Model model, @PathVariable String codigo) {
+        iAlumnoService.eliminarAlumno(codigo);
         return "redirect:/alumno";
     }
 }
