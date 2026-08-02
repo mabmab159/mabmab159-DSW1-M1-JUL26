@@ -10,4 +10,5 @@ public interface IAutoService {
     Auto get(Long id);
     List<Auto> getAll();
     List<Auto> getByFilter(Pageable pageable);
+    List<Auto> getByMarcaAndModelo(String marca, String modelo);
 }

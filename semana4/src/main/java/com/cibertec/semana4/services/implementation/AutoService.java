@@ -44,6 +44,9 @@ public class AutoService implements IAutoService { //Controller - Service - Repo
     @Override
     public Auto get(Long id) {
         return objectMapper.convertValue(iAutoRepository.findById(id).orElse(null), Auto.class);
+        // findById -> where id = ?
+        // findByNombreAndModeloWhereColorIs() -> where nombre = ? and modelo = ? and color = ?
+        // findByIdAndModeloWhereColorIsAndTop10CountGroupByMonthFechaCompra() -> where id = ? and modelo = ? and color = ?
     }
 
     @Override
@@ -55,6 +58,12 @@ public class AutoService implements IAutoService { //Controller - Service - Repo
     @Override
     public List<Auto> getByFilter(Pageable pageable) {
         return objectMapper.convertValue(iAutoRepository.findAll(pageable).stream().toList(), new TypeReference<List<Auto>>() {
+        });
+    }
+
+    @Override
+    public List<Auto> getByMarcaAndModelo(String marca, String modelo) {
+        return objectMapper.convertValue(iAutoRepository.searchByMarcaAndModeloNative(marca, modelo), new TypeReference<List<Auto>>() {
         });
     }
 }

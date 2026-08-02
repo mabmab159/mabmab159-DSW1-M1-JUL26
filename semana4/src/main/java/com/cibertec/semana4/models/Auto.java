@@ -15,7 +15,7 @@ public class Auto {
     @NotNull
     @NotBlank
     @NotEmpty
-    private String marca;
+    private Marca marca;
     @Size(min = 3, max = 10)
     private String modelo;
     @Pattern(regexp = "^[A-Z]{3}[0-9]{4}$")
