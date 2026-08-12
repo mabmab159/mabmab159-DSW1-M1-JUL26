@@ -1,0 +1,12 @@
+<h1>Bienvenido a la clase de demostraciòn</h1>
+<p>hola-mundo works!</p>
+<ul>
+  <li>Este es un texto 1</li>
+  <li>Este es un texto 2</li>
+</ul>
+<p>{{ ditto?.sprites?.back_default }}</p>
+<img [src]="ditto?.sprites?.back_default" alt="Pokemon">
+
+@for (pokemon of pokemones; track pokemon.sprites.front_default) {
+  <img [src]="pokemon.sprites.back_default" alt="Pokemon">
+}
