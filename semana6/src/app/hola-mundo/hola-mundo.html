@@ -10,3 +10,12 @@
 @for (pokemon of pokemones; track pokemon.sprites.front_default) {
   <img [src]="pokemon.sprites.back_default" alt="Pokemon">
 }
+
+<form>
+  <!--<input type="text" [formControl]="usuarioLogin">
+  <input type="text" [formControl]="passLogin">-->
+  <!--[(ngModel)]-->
+  <input type="text" [(ngModel)]="usuarioLoginRequest.usuario" name="usuario">
+  <input type="text" [(ngModel)]="usuarioLoginRequest.password" name="password">
+  <input type="button" value="Ingresar - Click aqui" (click)="login()">
+</form>

@@ -1,6 +1,7 @@
 package com.cibertec.semana5.controllers;
 
 import com.cibertec.semana5.models.UsuarioModel;
+import com.cibertec.semana5.models.UsuarioModelResponse;
 import com.cibertec.semana5.security.JWTAuthenticationConfig;
 import com.cibertec.semana5.services.IUsuarioService;
 import lombok.RequiredArgsConstructor;
@@ -14,6 +15,7 @@ import java.util.List;
 @RestController
 @RequestMapping("/usuarios")
 @RequiredArgsConstructor
+@CrossOrigin(origins = "*", allowedHeaders = "*")
 public class UsuarioController {
     private final IUsuarioService iUsuarioService;
     private final JWTAuthenticationConfig jwtAuthenticationConfig;
@@ -35,13 +37,14 @@ public class UsuarioController {
     }
 
     @PostMapping("/login")
-    public ResponseEntity<String> login(@RequestBody UsuarioModel usuario) {
+    public ResponseEntity<UsuarioModelResponse> login(@RequestBody UsuarioModel usuario) {
         UsuarioModel usuarioModel = iUsuarioService.login(usuario.getUsuario(), usuario.getPassword());
         if (usuarioModel == null) {
             throw new UsernameNotFoundException("Credenciales erradas");
         }
         return ResponseEntity.ok(
-                jwtAuthenticationConfig.getJWTToken(usuarioModel.getUsuario(), usuarioModel.getUsuario(), usuarioModel.getUsuario())
+                new UsuarioModelResponse(jwtAuthenticationConfig.getJWTToken(usuarioModel.getUsuario(),
+                        usuarioModel.getUsuario(), usuarioModel.getUsuario()))
         );
     }
 }
